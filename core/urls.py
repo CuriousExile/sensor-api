@@ -1,8 +1,6 @@
 from django.contrib import admin
-from django.urls import path, include
-from temperature.views import TemperatureDataViewSet
-from rest_framework.routers import DefaultRouter
-from temperature.views import TemperatureDataView, TemperatureDataListView, TemperatureDataCreateView, LatestTemperatureView
+from django.urls import path
+from home.views import TemperatureDataView, TemperatureDataListView, TemperatureDataCreateView, LatestTemperatureView
 
 
 urlpatterns = [

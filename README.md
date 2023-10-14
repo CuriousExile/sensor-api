@@ -67,7 +67,7 @@ The project is coded using a simple and intuitive structure presented below:
    |    |-- settings.py   # Project Configuration  
    |    |-- urls.py       # Project Routing
    |
-   |-- temperature/
+   |-- home/
    |    |-- views.py      # Temperature API Views 
    |    |-- models.py     # API Temperature Data Set Models 
    |
