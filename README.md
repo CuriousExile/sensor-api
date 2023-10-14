@@ -22,7 +22,7 @@ $ cd sensor-api
 > 👉 Install modules via `VENV`  
 
 ```bash
-$ virtualenv env
+$ python -m venv env
 $ source env/bin/activate
 $ pip install -r requirements.txt
 ```
