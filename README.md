@@ -81,25 +81,25 @@ The project is coded using a simple and intuitive structure presented below:
 
    ## API Usage
 
-    Take current temperate from Pi, adds it to the table and returns the value. <br/>
+   Take current temperate from Pi, adds it to the table and returns the value. <br/>
     ```
     HTTP GET /v1/temperature/now <br/>
     ```
     <br/>
     <br/>
-    Return last entry of the database <br/>
+   Return last entry of the database <br/>
     ```bash
     HTTP GET /v1/temperature/latest <br/>
     ```
     <br/>
     <br/>
-    Returns an QuerySet of all temperatures between given dates <br/>
+   Returns an QuerySet of all temperatures between given dates <br/>
     ```bash
     HTTP GET /v1/temperature/range/?start_date=2023-12-31T00:00:00&end_date=2024-12-31T00:00:00
     ```
    <br/>
    <br/>
-    Adds costum temperature value (takes a json in the request body) <br/>
+   Adds costum temperature value (takes a json in the request body) <br/>
 
     ```bash
     HTTP POST /v1/temperature/create
