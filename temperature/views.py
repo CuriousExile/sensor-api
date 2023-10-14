@@ -46,20 +46,28 @@ class TemperatureDataView(APIView):
         serializer = TemperatureDataSerializer(temperature_data)
         return Response(serializer.data, status=status.HTTP_200_OK)
         
-class TemperatureDataListView(APIView):
+class TemperatureDataListView(generics.ListAPIView):
     serializer_class = TemperatureDataSerializer
 
-    def get(self, request, *args, **kwargs):
-        start_date = request.GET.get('start_date')
-        end_date = request.GET.get('end_date')
+    def get(self):
+        start_date = self.request.query_params.get('start_date')
+        end_date = self.request.query_params.get('end_date')
+        queryset = TemperatureData.objects.filter(timestamp__range=[start_date, end_date])
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
 
-        if start_date and end_date:
-            start_date = datetime.fromisoformat(start_date)
-            end_date = datetime.fromisoformat(end_date)
+class TemperatureDataCreateView(generics.CreateAPIView):
+    serializer_class = TemperatureDataSerializer
 
-            queryset = TemperatureData.objects.filter(timestamp__gte=start_date, timestamp__lte=end_date)
-            serializer = self.serializer_class(queryset, many=True)
-            return Response(serializer.data)
+    def create(self, request):
+        serializer = self.serializer_class(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        else:
-            raise Http404("Invalid date range provided.")
+class LatestTemperatureView(generics.RetrieveAPIView):
+    serializer_class = TemperatureDataSerializer
+
+    def get_object(self):
+        return TemperatureData.objects.latest('timestamp')
