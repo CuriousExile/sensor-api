@@ -83,13 +83,13 @@ The project is coded using a simple and intuitive structure presented below:
 
    Take current temperate from Pi, adds it to the table and returns the value. <br/>
     ```
-    HTTP GET /v1/temperature/now <br/>
+    HTTP GET /v1/temperature/now
     ```
     <br/>
     <br/>
    Return last entry of the database <br/>
     ```
-    HTTP GET /v1/temperature/latest <br/>
+    HTTP GET /v1/temperature/latest
     ```
     <br/>
     <br/>
