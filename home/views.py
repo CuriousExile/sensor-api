@@ -48,7 +48,7 @@ class TemperatureDataView(APIView):
 class TemperatureDataListView(generics.ListAPIView):
     serializer_class = TemperatureDataSerializer
 
-    def get(self):
+    def get(self, request, *args, **kwargs):
         start_date = self.request.query_params.get('start_date')
         end_date = self.request.query_params.get('end_date')
         queryset = TemperatureData.objects.filter(timestamp__range=[start_date, end_date])

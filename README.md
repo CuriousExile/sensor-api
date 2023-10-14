@@ -78,3 +78,33 @@ The project is coded using a simple and intuitive structure presented below:
 ```
 
 <br />
+
+   ## API Usage
+
+   Take current temperate from Pi, adds it to the table and returns the value.
+    ```bash
+    HTTP GET /v1/temperature/now
+    ```
+    <br/>
+    Return last entry of the database
+    ```bash
+    HTTP GET /v1/temperature/latest
+    ```
+    <br/>
+    Returns an QuerySet of all temperatures between given dates
+    ```bash
+    HTTP GET /v1/temperature/range/?start_date=2023-12-31T00:00:00&end_date=2024-12-31T00:00:00
+    ```
+   <br/>
+    Adds costum temperature value (takes a json with following structure in the request body)
+    the default value is current time
+
+    ```bash
+    HTTP POST /v1/temperature/create
+
+    {
+    "sourcename": "SensorName",
+    "temperature": 25.5
+    }
+    ```
+
