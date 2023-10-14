@@ -81,7 +81,7 @@ The project is coded using a simple and intuitive structure presented below:
 
    ## API Usage
 
-   Take current temperate from Pi, adds it to the table and returns the value. <br/>
+    Take current temperate from Pi, adds it to the table and returns the value. <br/>
     ```
     HTTP GET /v1/temperature/now <br/>
     ```
@@ -99,18 +99,10 @@ The project is coded using a simple and intuitive structure presented below:
     ```
    <br/>
    <br/>
-    Adds costum temperature value (takes a json with following structure in the request body) <br/>
-    the default value is current time <br/>
+    Adds costum temperature value (takes a json in the request body) <br/>
 
     ```bash
     HTTP POST /v1/temperature/create
     ```
-    <br/>
-    <br/>
-    ```bash
-    {
-    "sourcename": "SensorName",
-    "temperature": 25.5
-    }
-    ```
+    
 
