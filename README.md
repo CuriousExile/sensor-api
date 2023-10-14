@@ -83,7 +83,7 @@ The project is coded using a simple and intuitive structure presented below:
 
    Take current temperate from Pi, adds it to the table and returns the value. <br/>
     ```
-    HTTP GET /v1/temperature/now
+    HTTP GET /v1/temperature/current
     ```
     <br/>
     <br/>
@@ -101,7 +101,7 @@ The project is coded using a simple and intuitive structure presented below:
    <br/>
    Adds costum temperature value (takes a json in the request body) <br/>
     ```
-    HTTP POST /v1/temperature/create
+    HTTP POST /v1/temperature
     ```
    .
 
