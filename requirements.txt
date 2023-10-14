@@ -1,5 +1,3 @@
 django
-django-admin-soft-dashboard
-django_filter
-markdown
 djangorestframework
+rest_framework
