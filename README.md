@@ -49,10 +49,10 @@ $ python manage.py createsuperuser
 > 👉 Start the app
 
 ```bash
-$ python manage.py runserver http://127.0.0.1:8001/
+$ python manage.py runserver '127.0.0.1:8001'
 ```
 
-At this point, the app runs at `http://127.0.0.1:8001/`. 
+At this point, the app runs at `127.0.0.1:8001`. 
 
 <br />
 
