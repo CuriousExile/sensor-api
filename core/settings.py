@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-^-1v1d5$0fo7(r2z&l-a*6vml4c4j51(nkgx4r8d&galo4s)ly
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.46']
-
+ALLOWED_HOSTS = ['85.215.54.228']
 
 # Application definition
 
@@ -37,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'home'
 ]
 
@@ -47,6 +47,7 @@ REST_FRAMEWORK = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -104,6 +105,9 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    "http://85.215.54.228:8002",
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/

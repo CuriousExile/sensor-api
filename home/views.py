@@ -7,11 +7,7 @@ from rest_framework import status
 from home.models import TemperatureData
 from home.serializers import TemperatureDataSerializer
 from rest_framework import generics
-from django.utils.datetime_safe import datetime
-
-base_dir = '/sys/bus/w1/devices/'
-device_folder = glob.glob(base_dir + '28*')[0]
-device_file = device_folder + '/w1_slave'
+from datetime import datetime
 
 class TemperatureDataViewSet(viewsets.ModelViewSet):
     queryset = TemperatureData.objects.all()
@@ -19,26 +15,9 @@ class TemperatureDataViewSet(viewsets.ModelViewSet):
 
 
 class TemperatureDataView(APIView):
-
-    def read_temp_raw():
-        f = open(device_file, 'r')
-        lines = f.readlines()
-        f.close()
-        return lines
-
-    def read_temp():
-        lines = TemperatureDataView.read_temp_raw()
-        while lines[0].strip()[-3:] != 'YES':
-            time.sleep(0.2)
-            lines = TemperatureDataView.read_temp_raw()
-        equals_pos = lines[1].find('t=')
-        if equals_pos != -1:
-            temp_string = lines[1][equals_pos+2:]
-            temp_c = float(temp_string) / 1000.0
-            return temp_c
         
     def get(self, request):
-        current_temperature = TemperatureDataView.read_temp()
+        current_temperature = 22
         temperature_data = TemperatureData(sourcename='garnele', temperature=current_temperature)
         temperature_data.save()
 
@@ -64,6 +43,11 @@ class TemperatureDataCreateView(generics.CreateAPIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    def get(self, request):
+        queryset = TemperatureData.objects
+        serializer = self.serializer_class(queryset, many=True)
+        return Response(serializer.data)
 
 class LatestTemperatureView(generics.RetrieveAPIView):
     serializer_class = TemperatureDataSerializer
